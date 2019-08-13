@@ -1,0 +1,30 @@
+{
+  "name": "homework-cache",
+  "version": "1.0.0",
+  "description": "cache lock",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vongolatt/homework-cache.git"
+  },
+  "keywords": [
+    "cache",
+    "lock"
+  ],
+  "author": "Vongola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vongolatt/homework-cache/issues"
+  },
+  "homepage": "https://github.com/Vongolatt/homework-cache#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.17.1",
+    "redis": "^2.8.0"
+  }
+}
