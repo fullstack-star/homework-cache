@@ -3,7 +3,7 @@ module.exports = {
     host: "localhost",
     user: "root",
     password: "Ropu0877",
-    database: "cache",
+    database: "new_schema",
     port: 3306
   },
   redis: {
