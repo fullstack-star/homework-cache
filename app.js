@@ -5,7 +5,7 @@ var redis = new Redis({
 	port: 6379,
 	host: '127.0.0.1'
 });
-
+// 模拟数据查询过程
 function queryData() {
 	return new Promise(resolve => {
 		setTimeout(() => {
@@ -16,29 +16,30 @@ function queryData() {
 
 app.use(async(ctx) => {
 	let data = await redis.get('data')
-	console.log(data)
 	if (!data) {
 		const lock = await redis.setnx('data', 'lock')
 		if (lock) {
-			console.log('全进来了？')
-			redis.del('data')
 			data = await queryData()
+			redis.del('data')
 			const r = await redis.setnx('data', JSON.stringify(data))  // r:1 设置成功100ms后删除(过期)
-			redis.publish('setData', data)
+			console.log('setDATA')
 			if (r > 0) {
 				setTimeout(() => {
 					redis.del('data')
 				}, 1000);
 			}
+			ctx.body = data
 		} else {
-			console.log('noLock')
-			redis.subscribe('setData')
-			redis.on('message', (channel, msg) => {
-				console.log(msg)
-				if (channel === 'setData') {
-					ctx.body = msg
+			console.log('没有获取到锁')
+			// 集群模式下：100个客户端共发10000条请求，会出现没有获取到锁的情况
+			const timer  = setInterval(async () => {
+				const d = await redis.get('data')
+				if (d && d !== 'lock') { // !== lock 是因为line 20设置的了lock
+					console.log(d)
+					ctx.body = d
+					clearInterval(timer)
 				}
-			})
+			}, 900);
 		}
 	} else {
 		ctx.body = data
