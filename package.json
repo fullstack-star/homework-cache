@@ -1,0 +1,26 @@
+{
+  "name": "homework-cache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tovinping/homework-cache.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tovinping/homework-cache/issues"
+  },
+  "homepage": "https://github.com/tovinping/homework-cache#readme",
+  "dependencies": {
+    "ioredis": "^4.14.0",
+    "koa": "^2.7.0",
+    "nodemon": "^1.19.1"
+  }
+}
