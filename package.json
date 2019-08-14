@@ -1,0 +1,14 @@
+{
+  "name": "homework-cache",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dirkwei/homework-cache.git",
+  "author": "dirk <inspiration520@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.17.1",
+    "redis": "^2.8.0"
+  }
+}
