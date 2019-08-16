@@ -1,0 +1,24 @@
+{
+  "name": "homework-cache",
+  "version": "1.0.0",
+  "description": "redis homework-cache.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoyexiang/homework-cache.git"
+  },
+  "keywords": [
+    "redis",
+    "mysql",
+    "cache"
+  ],
+  "author": "yezi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaoyexiang/homework-cache/issues"
+  },
+  "homepage": "https://github.com/xiaoyexiang/homework-cache#readme"
+}
