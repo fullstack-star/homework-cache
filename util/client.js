@@ -23,6 +23,7 @@ const redisSet = async (key, value, exp, time) => {
     await redisLock(lockKey);
     return new Promise((resolve, reject) => {
         client.set(key, value, exp, time, async (err, result) => {
+            console.log('---------------- redisSet -----------------');
             await redisUnlock(lockKey);
             err ? reject(err) : resolve(result);
         })
@@ -32,6 +33,7 @@ const redisSet = async (key, value, exp, time) => {
 const redisGet = key => {
     return new Promise((resolve, reject) => {
         client.get(key, (err, result) => {
+            console.log('---------------- redisGet -----------------');
             if(err) reject(err);
             else {
                 try {

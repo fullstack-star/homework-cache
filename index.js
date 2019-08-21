@@ -19,21 +19,21 @@ router.get('/cache', async (ctx, next) => {
     await next();
 
     let top5 = await redisCli.get(CACHE_KEY);
-    console.log('get cache: ', top5);
     if(!top5) {
         top5 = await db.query('select * from websites limit 5');
-        console.log('get db: ', top5);
+        console.log('get db: ', top5.length);
         if(await redisCli.checkLock(CACHE_KEY)) {
             ctx.body = top5;
         }
         try {
-            await redisCli.set(CACHE_KEY, JSON.stringify(top5), 'PX', 36000);
+            await redisCli.set(CACHE_KEY, JSON.stringify(top5), 'PX', 360000);
         } catch (err) {
             console.log(`redisCli set err: ${err}`);
             ctx.body = top5;
         }
     }
 
+    console.log('get cache: ', top5.length);
     ctx.body = top5;
 });
 
